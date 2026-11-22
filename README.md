@@ -25,7 +25,7 @@ force a workspace, or `BUGGY_MAPS=/path` for a different maps folder.
 sudo apt install ros-humble-ros-base python3-colcon-common-extensions python3-rosdep
 
 # 2. Clone
-git clone git@github.com:Pkanyal/qtpi_ros2_ws.git ~/ros2_ws
+git clone git@github.com:PKanyal/qtpi_ros2_ws.git ~/ros2_ws
 cd ~/ros2_ws
 
 # 3. Dependencies (Nav2, SLAM Toolbox, xacro, pyserial, numpy, ...)
