@@ -1,0 +1,12 @@
+start_epoch=1794831027
+start=2026-11-16 17:40:27 IST
+laptop_ip=172.20.10.13
+pi=qtpi@172.20.10.5
+rmw=rmw_cyclonedds_cpp peers=qtpi.local 172.20.10.5
+rviz_display_server=x11 DISPLAY=:1 WAYLAND_DISPLAY=
+gpu= Advanced Micro Devices, Inc. [AMD/ATI] Rembrandt (rev 0a)
+mem_total_mb=15192
+end_epoch=1794831077
+end=2026-11-16 17:41:17 IST
+exit_code=137
+exit_meaning=SIGKILL: force-quit, or killed by the out-of-memory killer

@@ -1,0 +1,2 @@
+t,temp_c,cpu_mhz,load1,mem_used_pct,arduino_ttyACM0,lidar,top_cpu
+1794830071,67.7,1800,3.21,15,0,1,sllidar_node:67.9 component_conta:62.7 odom_node:10.5

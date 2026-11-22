@@ -1,0 +1,1 @@
+-rw-r----- 1 prithvee whoopsie 19758291 Nov 16 15:16 /var/crash/_opt_ros_humble_bin_rviz2.1000.crash

@@ -1,0 +1,6 @@
+start_epoch=1794829800
+start=2026-11-16 17:20:00 IST (rebuilt from ~/.ros/log; not recorded with navrec)
+end_epoch=1794830071
+end=2026-11-16 17:24:31 (launch still running)
+command=ros2 launch robot_bringup navigation.launch.py
+ended_by=still running

@@ -1,0 +1,20 @@
+1794829800.5736806 [INFO] [launch]: All log files can be found below /home/qtpi/.ros/log/2026-11-16-17-20-00-570242-qtpi-5671
+1794829800.5742888 [INFO] [launch]: Default logging verbosity is set to INFO
+1794829804.0512586 [INFO] [python3-1]: process started with pid [5690]
+1794829804.0531271 [INFO] [odom_node-2]: process started with pid [5692]
+1794829804.0544109 [INFO] [sllidar_node-3]: process started with pid [5694]
+1794829804.0648057 [INFO] [robot_state_publisher-4]: process started with pid [5696]
+1794829804.0662975 [INFO] [joint_state_publisher-5]: process started with pid [5698]
+1794829804.0675156 [INFO] [component_container_isolated-6]: process started with pid [5711]
+1794829804.4885175 [INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/controller_server' in container '/nav2_container'
+1794829804.6164885 [INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/map_server' in container '/nav2_container'
+1794829804.6966324 [INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/smoother_server' in container '/nav2_container'
+1794829804.8645177 [INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/amcl' in container '/nav2_container'
+1794829805.0849352 [INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/planner_server' in container '/nav2_container'
+1794829805.1810126 [INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/lifecycle_manager_localization' in container '/nav2_container'
+1794829805.3273687 [INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/behavior_server' in container '/nav2_container'
+1794829805.4336834 [INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/bt_navigator' in container '/nav2_container'
+1794829805.5642653 [INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/waypoint_follower' in container '/nav2_container'
+1794829805.8715603 [INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/velocity_smoother' in container '/nav2_container'
+1794829806.0845537 [INFO] [launch_ros.actions.load_composable_nodes]: Loaded node '/lifecycle_manager_navigation' in container '/nav2_container'
+1794829807.3514974 [ERROR] [python3-1]: process has died [pid 5690, exit code 1, cmd 'python3 /home/qtpi/ros2_pk/src/Autonomous_Vehicle/scripts/motor_serial.py'].

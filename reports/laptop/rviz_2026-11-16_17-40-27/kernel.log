@@ -1,0 +1,44 @@
+Nov 16 20:41:12 prithvee kernel: audit: type=1400 audit(1794841872.025:8): apparmor="STATUS" operation="profile_load" profile="unconfined" name="nvidia_modprobe" pid=613 comm="apparmor_parser"
+Nov 16 20:41:12 prithvee kernel: audit: type=1400 audit(1794841872.025:9): apparmor="STATUS" operation="profile_load" profile="unconfined" name="nvidia_modprobe//kmod" pid=613 comm="apparmor_parser"
+Nov 16 20:41:13 prithvee kernel: amdgpu: Virtual CRAT table created for CPU
+Nov 16 20:41:13 prithvee kernel: amdgpu: Topology: Add CPU node
+Nov 16 20:41:13 prithvee kernel: amdgpu 0000:36:00.0: enabling device (0006 -> 0007)
+Nov 16 20:41:13 prithvee kernel: amdgpu 0000:36:00.0: amdgpu: Fetched VBIOS from VFCT
+Nov 16 20:41:13 prithvee kernel: amdgpu: ATOM BIOS: 113-REMBRANDT-X37
+Nov 16 20:41:14 prithvee kernel: amdgpu 0000:36:00.0: vgaarb: deactivate vga console
+Nov 16 20:41:14 prithvee kernel: amdgpu 0000:36:00.0: amdgpu: Trusted Memory Zone (TMZ) feature disabled as experimental (default)
+Nov 16 20:41:14 prithvee kernel: amdgpu 0000:36:00.0: amdgpu: VRAM: 512M 0x000000F400000000 - 0x000000F41FFFFFFF (512M used)
+Nov 16 20:41:14 prithvee kernel: amdgpu 0000:36:00.0: amdgpu: GART: 1024M 0x0000000000000000 - 0x000000003FFFFFFF
+Nov 16 20:41:14 prithvee kernel: [drm] amdgpu: 512M of VRAM memory ready
+Nov 16 20:41:14 prithvee kernel: [drm] amdgpu: 7596M of GTT memory ready.
+Nov 16 20:41:14 prithvee kernel: amdgpu 0000:36:00.0: amdgpu: Will use PSP to load VCN firmware
+Nov 16 20:41:14 prithvee kernel: amdgpu 0000:36:00.0: amdgpu: reserve 0xa00000 from 0xf41e000000 for PSP TMR
+Nov 16 20:41:14 prithvee kernel: amdgpu 0000:36:00.0: amdgpu: RAS: optional ras ta ucode is not available
+Nov 16 20:41:14 prithvee kernel: amdgpu 0000:36:00.0: amdgpu: RAP: optional rap ta ucode is not available
+Nov 16 20:41:14 prithvee kernel: amdgpu 0000:36:00.0: amdgpu: SECUREDISPLAY: securedisplay ta ucode is not available
+Nov 16 20:41:14 prithvee kernel: amdgpu 0000:36:00.0: amdgpu: SMU is initialized successfully!
+Nov 16 20:41:14 prithvee kernel: snd_hda_intel 0000:36:00.1: bound 0000:36:00.0 (ops amdgpu_dm_audio_component_bind_ops [amdgpu])
+Nov 16 20:41:14 prithvee kernel: kfd kfd: amdgpu: Allocated 3969056 bytes on gart
+Nov 16 20:41:14 prithvee kernel: kfd kfd: amdgpu: Total number of KFD nodes to be created: 1
+Nov 16 20:41:14 prithvee kernel: amdgpu: Virtual CRAT table created for GPU
+Nov 16 20:41:14 prithvee kernel: amdgpu: Topology: Add dGPU node [0x1681:0x1002]
+Nov 16 20:41:14 prithvee kernel: kfd kfd: amdgpu: added device 1002:1681
+Nov 16 20:41:14 prithvee kernel: amdgpu 0000:36:00.0: amdgpu: SE 1, SH per SE 2, CU per SH 6, active_cu_number 12
+Nov 16 20:41:14 prithvee kernel: amdgpu 0000:36:00.0: amdgpu: ring gfx_0.0.0 uses VM inv eng 0 on hub 0
+Nov 16 20:41:14 prithvee kernel: amdgpu 0000:36:00.0: amdgpu: ring comp_1.0.0 uses VM inv eng 1 on hub 0
+Nov 16 20:41:14 prithvee kernel: amdgpu 0000:36:00.0: amdgpu: ring comp_1.1.0 uses VM inv eng 4 on hub 0
+Nov 16 20:41:14 prithvee kernel: amdgpu 0000:36:00.0: amdgpu: ring comp_1.2.0 uses VM inv eng 5 on hub 0
+Nov 16 20:41:14 prithvee kernel: amdgpu 0000:36:00.0: amdgpu: ring comp_1.3.0 uses VM inv eng 6 on hub 0
+Nov 16 20:41:14 prithvee kernel: amdgpu 0000:36:00.0: amdgpu: ring comp_1.0.1 uses VM inv eng 7 on hub 0
+Nov 16 20:41:14 prithvee kernel: amdgpu 0000:36:00.0: amdgpu: ring comp_1.1.1 uses VM inv eng 8 on hub 0
+Nov 16 20:41:14 prithvee kernel: amdgpu 0000:36:00.0: amdgpu: ring comp_1.2.1 uses VM inv eng 9 on hub 0
+Nov 16 20:41:14 prithvee kernel: amdgpu 0000:36:00.0: amdgpu: ring comp_1.3.1 uses VM inv eng 10 on hub 0
+Nov 16 20:41:14 prithvee kernel: amdgpu 0000:36:00.0: amdgpu: ring kiq_0.2.1.0 uses VM inv eng 11 on hub 0
+Nov 16 20:41:14 prithvee kernel: amdgpu 0000:36:00.0: amdgpu: ring sdma0 uses VM inv eng 12 on hub 0
+Nov 16 20:41:14 prithvee kernel: amdgpu 0000:36:00.0: amdgpu: ring vcn_dec_0 uses VM inv eng 0 on hub 8
+Nov 16 20:41:14 prithvee kernel: amdgpu 0000:36:00.0: amdgpu: ring vcn_enc_0.0 uses VM inv eng 1 on hub 8
+Nov 16 20:41:14 prithvee kernel: amdgpu 0000:36:00.0: amdgpu: ring vcn_enc_0.1 uses VM inv eng 4 on hub 8
+Nov 16 20:41:14 prithvee kernel: amdgpu 0000:36:00.0: amdgpu: ring jpeg_dec uses VM inv eng 5 on hub 8
+Nov 16 20:41:14 prithvee kernel: [drm] Initialized amdgpu 3.57.0 20150101 for 0000:36:00.0 on minor 1
+Nov 16 20:41:14 prithvee kernel: fbcon: amdgpudrmfb (fb0) is primary device
+Nov 16 20:41:14 prithvee kernel: amdgpu 0000:36:00.0: [drm] fb0: amdgpudrmfb frame buffer device
