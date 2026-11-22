@@ -122,11 +122,28 @@ def inflate(grid, res, radius=0.35, inscribed=0.17):
     return out.astype(np.int8), reached
 
 
+def default_map():
+    """<workspace>/maps/c205a.yaml, found from where this package is installed
+    ($BUGGY_WS overrides; falls back to ~/ros2_ws)."""
+    ws = os.environ.get("BUGGY_WS")
+    if not ws:
+        try:
+            from ament_index_python.packages import get_package_share_directory
+            path = get_package_share_directory("nav_dashboard")
+            while os.path.dirname(path) != path and os.path.basename(path) != "install":
+                path = os.path.dirname(path)
+            if os.path.basename(path) == "install":
+                ws = os.path.dirname(path)
+        except Exception:
+            pass
+    ws = os.path.expanduser(ws or "~/ros2_ws")
+    return os.path.join(ws, "maps", "c205a.yaml")
+
+
 class FakeNav(Node):
     def __init__(self):
         super().__init__("fake_nav")
-        map_yaml = self.declare_parameter(
-            "map", os.path.expanduser("~/ros2_ws/maps/c205a.yaml")).value
+        map_yaml = self.declare_parameter("map", default_map()).value
         self.lock = threading.Lock()
         t0 = time.monotonic()
         self.static, self.res, origin = load_map(map_yaml)

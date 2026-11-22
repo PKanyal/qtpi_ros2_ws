@@ -5,7 +5,9 @@ Usage:
     ros2 launch robot_bringup navigation.launch.py map:=h_second_floor
     ros2 launch robot_bringup navigation.launch.py map:=/full/path/to/map.yaml
 
-A bare map name is looked up in ~/ros2_ws/maps/ (".yaml" is optional).
+A bare map name is looked up in <workspace>/maps/ (".yaml" is optional);
+set $BUGGY_MAPS to use another folder. Hardware ports can be overridden with
+lidar_port:=... and arduino_port:=... (see bringup.launch.py).
 
 Then in RViz: set "2D Pose Estimate" first, then send a "2D Goal Pose".
 """
@@ -24,7 +26,13 @@ from launch.actions import (
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 
-MAPS_DIR = os.path.expanduser("~/ros2_ws/maps")
+from robot_bringup.paths import (
+    DEFAULT_ARDUINO_PORT,
+    DEFAULT_LIDAR_PORT,
+    maps_dir,
+)
+
+MAPS_DIR = maps_dir()
 DEFAULT_MAP = "c205a"
 
 
@@ -104,6 +112,18 @@ def generate_launch_description():
             description="Lidar yaw on the robot in radians (0.0 = facing forward)",
         ),
 
+        DeclareLaunchArgument(
+            "lidar_port",
+            default_value=DEFAULT_LIDAR_PORT,
+            description="Serial device of the SLLIDAR (see ls /dev/serial/by-id/)",
+        ),
+
+        DeclareLaunchArgument(
+            "arduino_port",
+            default_value=DEFAULT_ARDUINO_PORT,
+            description="Serial device of the Arduino motor controller",
+        ),
+
         # Motors, odometry, lidar, robot model, Zenoh bridge (no SLAM)
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(
@@ -113,6 +133,8 @@ def generate_launch_description():
                 "slam": "false",
                 "bridge": LaunchConfiguration("bridge"),
                 "lidar_yaw": LaunchConfiguration("lidar_yaw"),
+                "lidar_port": LaunchConfiguration("lidar_port"),
+                "arduino_port": LaunchConfiguration("arduino_port"),
             }.items(),
         ),
 

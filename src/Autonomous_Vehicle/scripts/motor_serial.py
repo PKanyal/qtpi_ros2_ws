@@ -15,19 +15,23 @@ class MotorSerial(Node):
     def __init__(self):
         super().__init__('motor_serial')
 
+        # Override with:  --ros-args -p port:=/dev/ttyUSB0
+        # (bringup.launch.py passes its arduino_port:= argument here)
+        port = self.declare_parameter('port', '/dev/ttyACM0').value
+
         # exclusive=True: a second copy of this node (e.g. left over from a
         # launch that died) fails here instead of silently splitting the
         # Arduino's encoder messages with this one.
         try:
             self.serial_port = serial.Serial(
-                '/dev/ttyACM0',
+                port,
                 115200,
                 timeout=0.05,
                 exclusive=True
             )
         except serial.SerialException as e:
             self.get_logger().fatal(
-                f"Cannot open /dev/ttyACM0 exclusively ({e}). Another "
+                f"Cannot open {port} exclusively ({e}). Another "
                 "motor_serial.py may still be running: "
                 "pgrep -af motor_serial.py"
             )
@@ -38,7 +42,7 @@ class MotorSerial(Node):
         self.serial_port.reset_input_buffer()
 
         self.get_logger().info(
-            "Connected to Arduino on /dev/ttyACM0"
+            f"Connected to Arduino on {port}"
         )
 
         self.linear_velocity = 0.0

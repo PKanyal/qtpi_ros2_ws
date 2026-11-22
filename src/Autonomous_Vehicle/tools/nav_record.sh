@@ -23,7 +23,8 @@
 #   python3 ~/ros2_ws/src/Autonomous_Vehicle/tools/make_report.py [run_dir]
 
 TOOLS="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-WS="${QTPI_WS:-$HOME/ros2_ws}"
+# Workspace = three levels above this script (<ws>/src/Autonomous_Vehicle/tools)
+WS="${QTPI_WS:-$(cd "$TOOLS/../../.." && pwd)}"
 REPORTS="${QTPI_REPORTS:-$WS/reports}"
 
 BAG=0

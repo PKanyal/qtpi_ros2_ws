@@ -1,13 +1,13 @@
 # nav_dashboard
 
 Web dashboard for the buggy's Nav2 stack, served from the Pi.
-Separate workspace — nothing in ~/ros2_ws is modified.
+Built as part of the main workspace (`colcon build` from the workspace root).
 
 ## Run (with Nav2 or SLAM already running)
 
-    ~/nav_dashboard_ws/run_dashboard.sh                 # http://<pi-ip>:8080/
-    ~/nav_dashboard_ws/run_dashboard.sh allow_control:=false   # view-only
-    ~/nav_dashboard_ws/run_dashboard.sh port:=9000
+    src/nav_dashboard/run_dashboard.sh                 # http://<pi-ip>:8080/
+    src/nav_dashboard/run_dashboard.sh allow_control:=false   # view-only
+    src/nav_dashboard/run_dashboard.sh port:=9000
 
 Open the printed URL from any device on the same network.
 URL options: `#follow&zoom=60` (zoom = pixels per metre).
@@ -38,4 +38,4 @@ publishers are visible.
 
 ## Rebuild after edits
 
-    cd ~/nav_dashboard_ws && source /opt/ros/humble/setup.bash && colcon build
+    cd <workspace> && source /opt/ros/humble/setup.bash && colcon build --packages-select nav_dashboard

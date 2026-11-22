@@ -14,6 +14,12 @@ from launch.substitutions import Command, LaunchConfiguration
 from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterValue
 
+from robot_bringup.paths import (
+    DEFAULT_ARDUINO_PORT,
+    DEFAULT_LIDAR_PORT,
+    project_dir as find_project_dir,
+)
+
 # Zenoh bridge: lets RViz in Docker on the Mac connect over one TCP
 # connection (port 7447) instead of DDS/UDP, which Docker's NAT blocks.
 # Started here so it runs for both mapping and navigation.
@@ -96,9 +102,9 @@ def generate_launch_description():
     if not skip:
         check_no_leftovers()
 
-    project_dir = os.path.expanduser(
-        "~/ros2_ws/src/Autonomous_Vehicle"
-    )
+    # Found from where robot_bringup is installed (or $BUGGY_WS), so the
+    # workspace does not have to live in ~/ros2_ws.
+    project_dir = find_project_dir()
 
     slam_params = os.path.join(
         project_dir, "slam_config", "mapper_params_online_async.yaml"
@@ -106,12 +112,6 @@ def generate_launch_description():
 
     motor_script = os.path.join(
         project_dir, "scripts", "motor_serial.py"
-    )
-
-    lidar_serial = (
-        "/dev/serial/by-id/"
-        "usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_"
-        "4d129d87a554b14eabedef55218d5403-if00-port0"
     )
 
     sllidar_launch = os.path.join(
@@ -174,11 +174,24 @@ def generate_launch_description():
             description="Lidar yaw on the robot in radians (0.0 = facing forward)",
         ),
 
+        DeclareLaunchArgument(
+            "lidar_port",
+            default_value=DEFAULT_LIDAR_PORT,
+            description="Serial device of the SLLIDAR (see ls /dev/serial/by-id/)",
+        ),
+
+        DeclareLaunchArgument(
+            "arduino_port",
+            default_value=DEFAULT_ARDUINO_PORT,
+            description="Serial device of the Arduino motor controller",
+        ),
+
         *zenoh_bridge_actions(),
 
         # Arduino motor serial bridge
         ExecuteProcess(
-            cmd=["python3", motor_script],
+            cmd=["python3", motor_script, "--ros-args",
+                 "-p", ["port:=", LaunchConfiguration("arduino_port")]],
             output="screen",
         ),
 
@@ -201,7 +214,7 @@ def generate_launch_description():
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(sllidar_launch),
             launch_arguments={
-                "serial_port": lidar_serial,
+                "serial_port": LaunchConfiguration("lidar_port"),
                 "serial_baudrate": "256000",
                 "frame_id": "laser",
                 "scan_mode": "Sensitivity",

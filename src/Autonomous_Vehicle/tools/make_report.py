@@ -4,7 +4,7 @@
 Usage:
     make_report.py [run_dir] [--print-summary]
 
-run_dir defaults to ~/ros2_ws/reports/latest. Safe to re-run: e.g. after the
+run_dir defaults to <workspace>/reports/latest ($QTPI_REPORTS overrides). Safe to re-run: e.g. after the
 laptop uploaded its RViz report, run it again to merge that in.
 """
 
@@ -18,7 +18,9 @@ import sys
 import time
 from collections import Counter, defaultdict
 
-REPORTS = os.path.expanduser(os.environ.get("QTPI_REPORTS", "~/ros2_ws/reports"))
+# <ws>/src/Autonomous_Vehicle/tools/make_report.py -> <ws>/reports
+_WS = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+REPORTS = os.path.expanduser(os.environ.get("QTPI_REPORTS", os.path.join(_WS, "reports")))
 
 NODE_LINE = re.compile(
     r"\[(WARN|ERROR|FATAL)\] \[(\d+\.\d+)\] \[([^\]]+)\]: (.*)")
