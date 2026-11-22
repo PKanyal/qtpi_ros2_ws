@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>qtpi Nav Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="bar">
+  <div class="brand">
+    <span class="dot" id="connDot" title="disconnected"></span>
+    <strong>qtpi</strong><span class="muted">nav dashboard</span>
+  </div>
+  <div class="tools">
+    <div class="seg" role="group" aria-label="Click mode">
+      <button type="button" data-mode="pan" class="active" title="Drag to pan (Esc)">Pan</button>
+      <button type="button" data-mode="pose" class="ctl" title="Click + drag: set AMCL initial pose (P)">Set pose</button>
+      <button type="button" data-mode="goal" class="ctl" title="Click + drag: send Nav2 goal (G)">Nav goal</button>
+    </div>
+    <button type="button" id="cancelBtn" class="danger ctl" title="Cancel all Nav2 goals">Cancel</button>
+    <button type="button" id="followBtn" aria-pressed="false" title="Keep the robot centred (F)">Follow</button>
+    <button type="button" id="fitBtn" title="Zoom to the known map area">Fit map</button>
+  </div>
+</header>
+
+<main>
+  <div id="view">
+    <canvas id="map"></canvas>
+    <div id="hint" hidden></div>
+    <div id="toasts" aria-live="polite"></div>
+    <div id="overlay" class="overlay">Connecting to robot…</div>
+    <div class="corner">
+      <div id="cursor" class="mono"></div>
+      <div class="scalebar"><span id="scaleLine"></span><span id="scaleText" class="mono"></span></div>
+    </div>
+  </div>
+
+  <aside id="panel">
+    <section>
+      <h2>Navigation</h2>
+      <div class="status-row"><span id="navBadge" class="badge">idle</span><span id="nav2Ready" class="muted small"></span></div>
+      <dl>
+        <dt>Distance left</dt><dd id="fbDist" class="mono">—</dd>
+        <dt>ETA</dt><dd id="fbEta" class="mono">—</dd>
+        <dt>Nav time</dt><dd id="fbTime" class="mono">—</dd>
+        <dt>Recoveries</dt><dd id="fbRec" class="mono">—</dd>
+        <dt>Goal</dt><dd id="goalTxt" class="mono">—</dd>
+      </dl>
+    </section>
+    <section>
+      <h2>Robot</h2>
+      <dl>
+        <dt>Position</dt><dd id="rPos" class="mono">—</dd>
+        <dt>Heading</dt><dd id="rYaw" class="mono">—</dd>
+        <dt>Speed</dt><dd id="rVel" class="mono">—</dd>
+        <dt>Turn rate</dt><dd id="rRot" class="mono">—</dd>
+      </dl>
+      <button type="button" id="clearTrail" class="small-btn">Clear trail</button>
+    </section>
+    <section>
+      <h2>Layers</h2>
+      <div class="layers" id="layers">
+        <label><input type="checkbox" data-layer="map" checked><i class="sw sw-map"></i>Map</label>
+        <label><input type="checkbox" data-layer="global_costmap" checked><i class="sw sw-gcm"></i>Global costmap</label>
+        <label><input type="checkbox" data-layer="local_costmap" checked><i class="sw sw-lcm"></i>Local costmap</label>
+        <label><input type="checkbox" data-layer="plan" checked><i class="sw sw-plan"></i>Planned path</label>
+        <label><input type="checkbox" data-layer="scan" checked><i class="sw sw-scan"></i>Laser scan</label>
+        <label><input type="checkbox" data-layer="trail" checked><i class="sw sw-trail"></i>Trail</label>
+      </div>
+    </section>
+    <section>
+      <h2>Data</h2>
+      <ul class="sources" id="sources"></ul>
+    </section>
+  </aside>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
